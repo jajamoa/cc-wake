@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+cc_wake/ccpost
+.DS_Store
+*.egg-info/
+build/
+dist/

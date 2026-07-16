@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cc-wake"
+version = "0.1.0"
+description = "See every Claude Code session on your machine, and wake any into Remote Control from anywhere."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["claude-code", "dashboard", "terminal", "remote-control"]
+dependencies = []
+
+[project.scripts]
+cc-wake = "cc_wake.__main__:main"
+
+[tool.setuptools]
+packages = ["cc_wake"]
+
+[tool.setuptools.package-data]
+cc_wake = ["web/*.html", "ccpost.c"]

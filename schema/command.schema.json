@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cc-wake command",
+  "description": "What the Web UI publishes and a Driver executes. Deliberately a tiny closed set of named actions (a whitelist), NOT arbitrary input. A Driver must reject any action it does not recognize.",
+  "type": "object",
+  "required": ["action", "session_id"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["focus", "enable_rc"],
+      "description": "focus = bring the session's window/tab to the front; enable_rc = turn on Remote Control for the session so it becomes reachable from the web."
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Which session to act on."
+    }
+  },
+  "additionalProperties": false
+}

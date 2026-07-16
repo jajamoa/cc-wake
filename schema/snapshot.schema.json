@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cc-wake snapshot",
+  "description": "What a Collector produces and the Web UI renders. One flat list of the local Claude Code sessions, plus a timestamp so viewers can tell how fresh it is.",
+  "type": "object",
+  "required": ["ts", "sessions"],
+  "properties": {
+    "ts": {
+      "type": "integer",
+      "description": "Unix epoch milliseconds when this snapshot was produced."
+    },
+    "sessions": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/session" }
+    }
+  },
+  "definitions": {
+    "session": {
+      "type": "object",
+      "required": ["id", "label", "state"],
+      "properties": {
+        "id": { "type": "string", "description": "Session id (stable, e.g. a UUID)." },
+        "label": { "type": "string", "description": "Human-readable name for the session." },
+        "cwd": { "type": "string", "description": "Working directory." },
+        "state": {
+          "type": "string",
+          "enum": ["working", "waiting", "idle"],
+          "description": "working = a task is running; waiting = blocked on input/permission; idle = at rest."
+        },
+        "model": { "type": ["string", "null"], "description": "Model name, if known." },
+        "context_pct": { "type": ["integer", "null"], "description": "Context window used, 0-100, if known." },
+        "rc_url": {
+          "type": ["string", "null"],
+          "description": "If the session is remotely controllable (bridged to the web), the URL to reach it; else null."
+        },
+        "focusable": {
+          "type": "boolean",
+          "description": "Whether a Driver on this host can bring the session's window/tab to the front."
+        },
+        "started": { "type": ["integer", "null"], "description": "Unix epoch ms the session started." },
+        "updated": { "type": ["integer", "null"], "description": "Unix epoch ms of last activity." }
+      }
+    }
+  }
+}
