@@ -4,9 +4,15 @@ You're out, and a Claude Code session is still running on your Mac back home. Yo
 want to check on it, or take it over from your phone. But you never started it with
 remote control, so there's no way in.
 
-cc-wake is the way in. It shows every Claude Code session on your machine in one
-live dashboard, and lets you wake any of them into Remote Control from anywhere.
-Then you open it on the web and keep going.
+cc-wake is the way in. Run its agent once and it covers every session on the
+machine, so from your phone you can wake any of them into Remote Control, even the
+ones you started plainly. Then you open the session on the web and keep going.
+
+Claude Code has native [Remote Control](https://code.claude.com/docs/en/remote-control),
+but you turn it on per session, from the machine (a launch flag, or typing
+`/remote-control` in the session). Forget, and you're locked out until you're back
+at the keyboard. Closing that gap is what people keep asking for
+([anthropics/claude-code#29006](https://github.com/anthropics/claude-code/issues/29006)).
 
 Local-first (a single `python3` process, no dependencies, nothing leaves the
 machine in the default setup) and split into small, swappable parts, so you can
